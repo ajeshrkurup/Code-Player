@@ -1,0 +1,266 @@
+<!doctype html>
+
+<html>
+
+	<head>
+	
+		<title> Code Player </title>
+	
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	
+		<style>
+	
+			body {
+			
+				margin:0;
+				
+			
+			}
+			
+			
+			
+			#menubar {
+			
+				width:100%;
+				height:50px;
+				background-color:#e0e0e0;
+				border-bottom:2px solid grey;				
+			
+			}
+			
+			#logo {
+			
+				font-family:helvetica;
+				font-weight:bold;
+				padding:15px 0px 5px 5px;
+				font-size:1.1em;
+				float:left;
+			
+			}
+			
+			#runDiv
+			{
+			
+				float:right;
+				padding:10px 20px 0 0;
+			
+			}
+			
+			
+			#runButton
+			{
+				font-size:1.2em;
+								
+			}
+			
+				
+			#menuItems
+			{
+				width:192.5px;
+				margin:0 auto;
+				list-style:none;
+				border:1px solid grey;
+				height:28px;
+				border-radius:3px;
+				padding:0;
+				position:relative;
+				top:5px;		
+				
+			}
+			
+			#menuItems li
+			{
+			
+				float:left;							
+				border-right:1px solid grey;
+				padding:5px;				
+				
+			}
+			
+			#clear
+			{
+			
+				clear:both;
+			
+			}
+			
+			.codeContainer
+			{
+			
+				width:50%;
+				height:100%;
+				position:relative;
+				float:left;
+			
+			}
+			
+			.codeContainer textarea
+			{
+			
+				width : 100%;
+				height:100%;
+				font-size:125%;
+				padding:10px 0 0 10px;
+				border:none;
+				border-right:1px solid grey;
+				box-sizing:border-box;
+			
+			}
+			
+			.codelabel
+			{
+			
+				position:absolute;
+				right:10px;
+				top:10px;
+				font-weight:bold;
+				font-size:120%;
+			
+			}
+			
+			#CSSContainer , #JSContainer
+			{
+			
+				display:none;
+			
+			}
+			
+			iframe
+			{
+			
+				height:100%;
+				position:relative;
+				left:10px;
+				width:80%;
+				border:none;
+			
+			}
+			
+			.selected
+			{
+			
+				background-color:grey;
+			
+			}
+
+
+			
+		</style>
+		
+		
+		<script type="text/javascript" src="jquery.min.js">
+		
+		
+		</script>
+	
+	</head>
+	
+		
+	<body>
+	
+		<div id="wrapper">
+		
+		   <div id="menubar">
+		   
+				<div id="logo">
+				
+					CODE PLAYER
+				
+				</div>
+				
+				<div id="runDiv">
+				
+				  <button id="runButton"> RUN </button>
+				
+				</div>
+				
+				<div id="menuList">
+				
+					<ul id="menuItems" >
+					
+						<li class="toggle selected">HTML</li>
+						<li class="toggle">CSS</li>
+						<li class="toggle">JS</li>
+						<li class="toggle selected" style="border:none">RESULT</li>
+						
+					</ul>	
+				</div>
+		   </div>
+		   
+		   <div id="clear"> </div>
+		   
+		   <div class="codeContainer" id="HTMLContainer">
+		   
+				<div class="codelabel">HTML</div>
+		   
+				<textarea> Example HTML Code </textarea>
+		   
+		   </div>
+		   
+		   <div class="codeContainer" id="CSSContainer">
+		   
+				<div class="codelabel">CSS</div>
+		   
+				<textarea> Example CSS Code </textarea>
+		   
+		   </div>
+
+
+		   <div class="codeContainer" id="JSContainer">
+		   
+				<div class="codelabel">JS</div>
+		   
+				<textarea> Example JS Code </textarea>
+		   
+		   </div>
+		   
+		   <div class="codeContainer" id="RESULTContainer">
+		   
+				<div class="codelabel">RESULT</div>
+		   
+				<iframe> </iframe>
+		   
+		   </div>
+		   
+		   
+		   <script>
+		   
+				var windowHeight = $(window).height();
+				var menuHeight = $("#menubar").height();
+				var containerHeight = windowHeight-menuHeight;
+				$(".codeContainer").height(containerHeight+"px");
+		   
+				
+				$(".toggle").click(function(){
+				
+					$(this).toggleClass("selected");
+					var activeDiv = $(this).html();
+										
+					$("#"+activeDiv+"Container").toggle();
+				
+					var showingDivs = $(".codeContainer").filter( function(){
+					
+						return($(this).css("display")!="none");
+					
+					}).length;
+					
+					var width = 100/showingDivs;
+					$(".codeContainer").css("width" , width+"%");
+					
+					
+				});
+		   </script>
+		
+		  
+		
+		</div>
+		
+		
+		
+		
+	
+	</body>
+	
+</html>
